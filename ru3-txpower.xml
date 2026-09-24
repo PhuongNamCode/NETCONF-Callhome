@@ -1,0 +1,29 @@
+<!--
+  O-RAN Radio Unit (O-RU) TX Power / Gain Configuration
+  Model: o-ran-uplane-conf:1.0
+  Target Node: RU3-169.254.0.14 (or RU0-169.254.0.2)
+  
+  Gain Values (Metanoia Jura 10^-4 fixed point scale):
+    - 24.0 dB = 240000.0 (Standard default / nominal max)
+    - 22.0 dB = 220000.0
+    - 20.0 dB = 200000.0
+    - 18.0 dB = 180000.0
+    - 15.0 dB = 150000.0
+    - 10.0 dB = 100000.0
+
+  RESTCONF PATCH Command:
+    curl -i -sS -u "$SDNC_AUTH" -X PATCH \
+      -H "Content-Type: application/yang-data+xml" \
+      --data-binary @ru3-txpower.xml \
+      "http://10.1.101.54:30267/rests/data/network-topology:network-topology/topology=topology-netconf/node=${RU_NODE}/yang-ext:mount/o-ran-uplane-conf:user-plane-configuration"
+-->
+<user-plane-configuration xmlns="urn:o-ran:uplane-conf:1.0">
+  <tx-array-carriers>
+    <name>tx-carr0</name>
+    <gain>240000.0</gain>
+  </tx-array-carriers>
+  <tx-array-carriers>
+    <name>tx-carr1</name>
+    <gain>240000.0</gain>
+  </tx-array-carriers>
+</user-plane-configuration>

@@ -1,0 +1,14 @@
+<processing-elements xmlns="urn:o-ran:processing-element:1.0">
+  <transport-session-type>ETH-INTERFACE</transport-session-type>
+  <ru-elements>
+    <name>pse3</name>
+    <transport-flow>
+      <interface-name>fm1-mac9.3</interface-name>
+      <eth-flow>
+        <ru-mac-address>00:e0:0c:00:ae:06</ru-mac-address>
+        <vlan-id>3</vlan-id>
+        <o-du-mac-address>00:11:22:33:44:55</o-du-mac-address>
+      </eth-flow>
+    </transport-flow>
+  </ru-elements>
+</processing-elements>

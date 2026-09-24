@@ -1,0 +1,228 @@
+root@o-ru-3:~# cat /etc/rumanager.conf
+{
+  "ap_mac_all": [
+    "00:0E:AD:33:44:00",
+    "00:0E:AD:33:44:01",
+    "00:0E:AD:33:44:02",
+    "00:0E:AD:33:44:03"
+  ],
+  "ap_mac_loopback": [
+    "00:0E:AD:33:44:10",
+    "00:0E:AD:33:44:11",
+    "00:0E:AD:33:44:12",
+    "00:0E:AD:33:44:13"
+  ],
+  "ap_mac_ipc": [
+    "00:0E:AD:00:00:20",
+    "00:0E:AD:00:00:21",
+    "00:0E:AD:00:00:22",
+    "00:0E:AD:00:00:23"
+  ],
+  "ap_mac": [
+    "00:0E:AD:33:44:00",
+    "00:0E:AD:33:44:01",
+    "00:0E:AD:33:44:02",
+    "00:0E:AD:33:44:03"
+  ],
+  "ap_interface_all": [
+    "fm1-mac6",
+    "fm1-mac2",
+    "fm1-mac10",
+    "fm1-mac5"
+  ],
+  "ap_interface": [
+    "fm1-mac6",
+    "fm1-mac2",
+    "fm1-mac10",
+    "fm1-mac5"
+  ],
+  "np_interface": "fm1-mac9",
+  "np_static_ip": "192.168.9.9",
+  "np_static_ipv6": "2000::c4",
+  "np_ecpri_forwarding": {
+    "ul": {
+      "0xaaaa": "0100",
+      "0x5555": "1000",
+      "0x6666": "0001",
+      "0x2222": "0010",
+      "0x0000": "0001",
+      "0x0001": "0010",
+      "0x0002": "0100",
+      "0x0003": "1000",
+      "0x0004": "0001",
+      "0x0005": "0010",
+      "0x0006": "0100",
+      "0x0007": "1000"
+    },
+    "dl": {
+      "0xaaaa": "0100",
+      "0x5555": "1000",
+      "0x6666": "0001",
+      "0x2222": "0010",
+      "0x0000": "0001",
+      "0x0001": "0010",
+      "0x0002": "0100",
+      "0x0003": "1000",
+      "0x0004": "0001",
+      "0x0005": "0010",
+      "0x0006": "0100",
+      "0x0007": "1000"
+    }
+  },
+  "ms_rf_ctl": [
+    "master",
+    "slave",
+    "master",
+    "slave"
+  ],
+  "rf_interface": 1,
+  "rfic_num": [
+    0,
+    1
+  ],
+  "op_mode": "oran",
+  "lo_leakage_compensation_real": 0,
+  "lo_leakage_compensation_image": 0,
+  "adc_dc_compensation_real": 0,
+  "adc_dc_compensation_image": 0,
+  "cali_cfg": "0x300ff",
+  "rf_cfg": 1,
+  "rf_pa": 2,
+  "rf_tx_gain_manual": 0,
+  "rf_rx_gain_manual": 0,
+  "rx_power_agc_threshold": -620,
+  "rx_power_agc_update_period": 4,
+  "ap_pps": 0,
+  "gps_time_delta": 0,
+  "offset_alpha": 0,
+  "offset_beta": 0,
+  "processing_element/pcp": 7,
+  "processing_element/pcp_prach": 7,
+  "processing_element/vlan_id": 3,
+  "processing_element/du_mac_address": "00:11:22:33:44:55",
+  "rx_array_carrier/n_ta_offset": 25600,
+  "low_level_tx_endpoint/compression_type": "DYNAMIC",
+  "low_level_tx_endpoint/compression_iq_bitwidth": 9,
+  "low_level_tx_endpoint/compression_format": "BFP",
+  "low_level_tx_endpoint/num_prb_per_scs_30khz": [
+    133,
+    133
+  ],
+  "low_level_tx_endpoint/compression/fs-offset": 0,
+  "low_level_rx_endpoint/compression_type": "DYNAMIC",
+  "low_level_rx_endpoint/compression_iq_bitwidth": 9,
+  "low_level_rx_endpoint/compression_format": "BFP",
+  "low_level_rx_endpoint/num_prb_per_scs_30khz": [
+    133,
+    133
+  ],
+  "low_level_rx_endpoint/compression/fs-offset": 8,
+  "center-of-channel-bandwidth": [
+    3425010000,
+    3425010000
+  ],
+  "tx_carrier_gain": [
+    240000,
+    240000
+  ],
+  "tx_gain_correction": [
+    6300,
+    6300,
+    6300,
+    6300
+  ],
+  "rx_gain_correction": [
+   301,
+   301,
+   301,
+   301
+  ],
+  "tx_loss": 86,
+  "DL_phase_comp_en": true,
+  "UL_phase_comp_en": true,
+  "PA_settling_pre_kick": 20,
+  "TRXSW_settling_pre_kick": 0,
+  "DPD_settling_pre_kick": 0,
+  "auxadc_pol_coeffs_manually": false,
+  "cal_auxadc_poly_coeffs_0": [
+    1.94261085987,
+    1.94261085987,
+    1.94261085987,
+    1.94261085987
+  ],
+  "cal_auxadc_poly_coeffs_1": [
+    -29.1785297394,
+    -29.1785297394,
+    -29.1785297394,
+    -29.1785297394
+  ],
+  "ap_console": "0x3",
+  "l2_mtu": 8000,
+  "tx_power_detect_floor_delta": 5000,
+  "tx_rf_gain_max": [
+    24,
+    24
+  ],
+  "auxadc_voltage_range": [
+    [
+      80,
+      950
+    ],
+    [
+      376,
+      950
+    ]
+  ],
+  "power_detector_type": 0,
+  "nominal_system_gain": 205,
+  "rf_rx_loss_compensation": false,
+  "ls_dcs_dac_gain": 15,
+  "ul_pkt_delay": [
+    107100,
+    109100,
+    111100,
+    113100
+  ],
+  "baseband_board_config": "0x00",
+  "rf_board_config": [
+    "0x00",
+    "0x00"
+  ],
+  "rf_tx_pin_config": [
+    "0x1e",
+    "0x1e"
+  ],
+  "rf_rx_pin_config": [
+    "0x11",
+    "0x11"
+  ],
+  "ptp_stack": "accutime",
+  "splane_interface": "fm1-mac9",
+  "ptp_profile": "G_8275_1",
+  "master_ip_configuration": [
+    {
+      "ip-address": "192.168.9.239",
+      "local-priority": 128
+    }
+  ],
+  "ptp_debug": false,
+  "skip_lock": false,
+  "synce_enable": true,
+  "accepted_clock_classes": [
+    6,
+    7,
+    135,
+    140,
+    150,
+    160,
+    165,
+    248,
+    255
+  ],
+  "acceptance_list_of_ssm": "QL-PRC",
+  "holdover_interval": 60,
+  "vdu_enable": false,
+  "pcap_enable": false,
+  "ap_recovery_delta": 5,
+  "version": "2.2.6"
+}

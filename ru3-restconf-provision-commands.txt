@@ -1,0 +1,36 @@
+# RU3 RESTCONF provisioning commands
+# Preconditions:
+#   - SDNC_AUTH is set in the current shell.
+#   - RU_NODE is set to RU3-169.254.0.14.
+#   - Copy ru3-interfaces.xml, ru3-processing-elements.xml, and ru3-uplane.xml
+#     to /root/ on the SMO host before running these commands.
+
+# 1. Provision the physical interface and VLAN interface.
+curl -i -sS -u "$SDNC_AUTH" -X PUT \
+  -H "Content-Type: application/yang-data+xml" \
+  --data-binary @/root/ru3-interfaces.xml \
+  "http://10.1.101.54:30267/rests/data/network-topology:network-topology/topology=topology-netconf/node=${RU_NODE}/yang-ext:mount/ietf-interfaces:interfaces"
+
+# 2. Provision processing element pse3 and its Ethernet transport flow.
+curl -i -sS -u "$SDNC_AUTH" -X PUT \
+  -H "Content-Type: application/yang-data+xml" \
+  --data-binary @/root/ru3-processing-elements.xml \
+  "http://10.1.101.54:30267/rests/data/network-topology:network-topology/topology=topology-netconf/node=${RU_NODE}/yang-ext:mount/o-ran-processing-element:processing-elements"
+
+# 3. Provision the complete U-plane: two carriers, Tx/Rx/PRACH endpoints,
+#    eAxC IDs, and low-level Tx/Rx links.
+curl -i -sS -u "$SDNC_AUTH" -X PUT \
+  -H "Content-Type: application/yang-data+xml" \
+  --data-binary @/root/ru3-uplane.xml \
+  "http://10.1.101.54:30267/rests/data/network-topology:network-topology/topology=topology-netconf/node=${RU_NODE}/yang-ext:mount/o-ran-uplane-conf:user-plane-configuration"
+
+# 4. Dynamically update TX Power / Gain for both tx-carr0 and tx-carr1 without rewriting U-plane.
+curl -i -sS -u "$SDNC_AUTH" -X PATCH \
+  -H "Content-Type: application/yang-data+xml" \
+  --data-binary @/root/ru3-txpower.xml \
+  "http://10.1.101.54:30267/rests/data/network-topology:network-topology/topology=topology-netconf/node=${RU_NODE}/yang-ext:mount/o-ran-uplane-conf:user-plane-configuration"
+
+# 5. Query and verify the TX power / carriers configuration on RU.
+curl -fsS -u "$SDNC_AUTH" -H "Accept: application/yang-data+json" \
+  "http://10.1.101.54:30267/rests/data/network-topology:network-topology/topology=topology-netconf/node=${RU_NODE}/yang-ext:mount/o-ran-uplane-conf:user-plane-configuration/tx-array-carriers" | jq .
+
